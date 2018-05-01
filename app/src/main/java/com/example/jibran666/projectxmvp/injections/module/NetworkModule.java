@@ -2,6 +2,7 @@ package com.example.jibran666.projectxmvp.injections.module;
 
 import android.content.Context;
 
+import com.example.jibran666.projectxmvp.BuildConfig;
 import com.example.jibran666.projectxmvp.injections.ApiServiceScope;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.FieldNamingPolicy;
@@ -14,6 +15,7 @@ import dagger.Provides;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import timber.log.Timber;
 
@@ -35,17 +37,23 @@ public class NetworkModule {
                 .baseUrl(baseUrl)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
     @Provides
     @ApiServiceScope
     public OkHttpClient provideOkHttpClient(HttpLoggingInterceptor loggingInterceptor, ChuckInterceptor chuckInterceptor, StethoInterceptor stethoInterceptor) {
-        return new OkHttpClient.Builder()
-                .addInterceptor(loggingInterceptor)
-                .addInterceptor(chuckInterceptor)
-                .addNetworkInterceptor(stethoInterceptor)
-                .build();
+
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        if (BuildConfig.DEBUG) {
+            builder
+                    .addInterceptor(loggingInterceptor)
+                    .addInterceptor(chuckInterceptor)
+                    .addNetworkInterceptor(stethoInterceptor);
+        }
+        return builder.build();
+
     }
 
     @Provides

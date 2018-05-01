@@ -1,7 +1,9 @@
-package com.example.jibran666.projectxmvp;
+package com.example.jibran666.projectxmvp.features;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.example.jibran666.projectxmvp.R;
 
 public class MainActivity extends AppCompatActivity {
 

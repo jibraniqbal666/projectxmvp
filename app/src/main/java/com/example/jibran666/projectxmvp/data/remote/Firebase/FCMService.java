@@ -11,8 +11,8 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.example.jibran666.projectxmvp.MainActivity;
 import com.example.jibran666.projectxmvp.R;
+import com.example.jibran666.projectxmvp.features.MainActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
