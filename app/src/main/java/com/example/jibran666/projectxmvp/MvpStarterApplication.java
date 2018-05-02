@@ -21,6 +21,7 @@ public class MvpStarterApplication extends Application {
         return (MvpStarterApplication) context.getApplicationContext();
     }
 
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -38,8 +39,8 @@ public class MvpStarterApplication extends Application {
     public AppComponent getAppComponent() {
         if (appComponent == null) {
             appComponent = DaggerAppComponent.builder()
-                    .appModule(new AppModule(this))
                     .networkModule(new NetworkModule(BuildConfig.BASE_API_URL, this))
+                    .appModule(new AppModule(this))
                     .build();
         }
         return appComponent;

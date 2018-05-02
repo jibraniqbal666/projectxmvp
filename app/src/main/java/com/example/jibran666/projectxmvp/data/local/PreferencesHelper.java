@@ -2,11 +2,12 @@ package com.example.jibran666.projectxmvp.data.local;
 
 import android.content.SharedPreferences;
 
+import com.example.jibran666.projectxmvp.injections.ApiServiceScope;
+
 import javax.annotation.Nonnull;
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
-@Singleton
+@ApiServiceScope
 public class PreferencesHelper {
 
     private static final String TAG = "PreferencesHelper";
