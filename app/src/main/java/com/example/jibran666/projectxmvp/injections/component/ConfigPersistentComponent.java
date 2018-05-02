@@ -6,8 +6,8 @@ import com.example.jibran666.projectxmvp.injections.module.FragmentModule;
 
 import dagger.Component;
 
-@Component(dependencies = AppComponent.class)
 @ConfigPersistent
+@Component(dependencies = AppComponent.class)
 public interface ConfigPersistentComponent {
     ActivityComponent activityComponent(ActivityModule activityModule);
 
